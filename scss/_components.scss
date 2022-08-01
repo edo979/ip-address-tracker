@@ -11,7 +11,7 @@
 }
 
 .input-group {
-  margin-top: 1.4rem;
+  margin-top: 1.5rem;
   width: 100%;
   display: flex;
   border-radius: $b-radius;
@@ -31,8 +31,16 @@
 
   button {
     margin: 0;
-    padding: 1.1rem;
-    background-color: $Very-Dark-Gray;
+    border: 0;
+    padding: 1.2rem;
+    background-color: black;
+
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      background-color: $Very-Dark-Gray;
+    }
   }
 }
 
