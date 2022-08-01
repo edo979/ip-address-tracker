@@ -24,16 +24,53 @@
     </style>
   </head>
   <body>
-    IP Address Tracker Search for any IP address or domain IP Address Location
-    Timezone UTC
-    <!-- add offset value dynamically using the API -->
-    ISP
+    <div class="grid-container">
+      <div class="inner-container">
+        <header>
+          <h1>IP Address Tracker</h1>
+        </header>
 
-    <div class="attribution">
+        <main>
+          <form>
+            <input
+              type="number"
+              name="ip-address"
+              id="ip-address"
+              placeholder="Search for any IP address or domain"
+            />
+            <button>></button>
+          </form>
+
+          <div class="container">
+            <div class="box">
+              <div class="box_title">IP Address</div>
+              <div class="box_content">box content</div>
+            </div>
+            <div class="box">
+              <div class="box_title">Location</div>
+              <div class="box_content">box content</div>
+            </div>
+            <div class="box">
+              <div class="box_title">Timezone</div>
+              <div class="box_content">UTC - box content</div>
+            </div>
+            <div class="box">
+              <div class="box_title">ISP</div>
+              <div class="box_content">box content</div>
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <div class="top-background"></div>
+      <div class="map" id="map"></div>
+    </div>
+
+    <footer class="attribution">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
         >Frontend Mentor</a
       >. Coded by <a href="#">Your Name Here</a>.
-    </div>
+    </footer>
   </body>
 </html>
