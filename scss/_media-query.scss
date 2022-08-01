@@ -1,4 +1,11 @@
 @media (min-width: 50em) {
+  :root {
+    --fs-200: 0.7rem;
+    --fs-300: 1rem;
+    --fs-500: 1.2rem;
+    --fs-800: 1.75rem;
+  }
+
   .top-background {
     height: 280px;
   }
@@ -6,5 +13,31 @@
   .container {
     display: flex;
     justify-content: space-between;
+    padding: 1.2rem 0;
+    text-align: left;
+  }
+
+  .box {
+    flex-basis: 100%;
+    margin-top: 0;
+    padding-inline: 1.2rem;
+
+    &:not(:first-child) {
+      border-left: 1px solid $Light-Gray;
+    }
+
+    &_content {
+      max-width: 10ch;
+    }
+  }
+}
+
+@media (min-width: 58em) {
+  :root {
+    --fs-500: 1.45rem;
+  }
+
+  .box {
+    padding-inline: 1.5rem;
   }
 }

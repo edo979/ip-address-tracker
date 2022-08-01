@@ -12,7 +12,8 @@
 
 .input-group {
   margin-top: 1.5rem;
-  width: 100%;
+  margin-inline: auto;
+  width: min(100%, 555px);
   display: flex;
   border-radius: $b-radius;
   overflow: hidden;
@@ -52,7 +53,7 @@
 }
 
 .box {
-  &:not(:first-child) {
+  &:where(:not(:first-child)) {
     margin-top: 1rem;
   }
 
