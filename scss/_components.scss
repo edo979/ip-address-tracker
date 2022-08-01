@@ -38,8 +38,23 @@
 
 .container {
   margin-top: 1.4rem;
+  padding: 1rem;
   border-radius: $b-radius;
   background-color: white;
+}
+
+.box {
+  &_title {
+    font-size: var(--fs-200);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: $Dark-Gray;
+  }
+  &_content {
+    font-size: var(--fs-500);
+    font-weight: var(--fw-semi-bold);
+  }
 }
 
 .map {
