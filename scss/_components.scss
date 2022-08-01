@@ -2,6 +2,36 @@
   background-image: url('../images/pattern-bg.png');
 }
 
+.inner-container {
+  text-align: center;
+}
+
+.input-group {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  border-radius: $b-radius;
+  overflow: hidden;
+
+  input {
+    flex: 1;
+    border: 0;
+    inset: 0;
+  }
+
+  button {
+    margin: 0;
+    padding: 10px;
+    background-color: $Very-Dark-Gray;
+  }
+}
+
+.container {
+  margin-top: 1.5rem;
+  border-radius: $b-radius;
+  background-color: white;
+}
+
 .map {
   background-color: burlywood;
 }
