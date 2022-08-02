@@ -1,8 +1,12 @@
-const ipifyUrl =
-  'https://geo.ipify.org/api/v2/country,city?apiKey=at_xxGERdbJjZCIHWKQSyP09O9KZHXSs'
+// const ipifyUrl =
+//   'https://geo.ipify.org/api/v2/country,city?apiKey=at_xxGERdbJjZCIHWKQSyP09O9KZHXSs'
 
-async function get(url) {
+export async function get(url) {
   const response = await fetch(url)
-  const resData = await response.json()
-  return resData
+
+  if (response.ok) {
+    return await response.json()
+  } else {
+    return Promise.reject(response.status)
+  }
 }
