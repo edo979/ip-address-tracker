@@ -1,15 +1,30 @@
 import './scss/stayle.scss'
-import { get } from '/js/app'
 
-const ipifyFile = 'ipify1.json'
+// const ipifyUrl =
+//   'https://geo.ipify.org/api/v2/country,city?apiKey=at_xxGERdbJjZCIHWKQSyP09O9KZHXSs'
 
-get(ipifyFile)
-  .then((data) => getLocation(data))
-  .catch((err) => console.log('Error with status: ' + err))
+const ipifyFile = 'ipify.json',
+  locationData = { lat: undefined, lng: undefined }
 
-function getLocation(data) {
-  const lat = data.location.lat,
-    lng = data.location.lng
+export async function get(url) {
+  const response = await fetch(url)
 
-  console.log('LAT: ', lat, 'LNG: ', lng)
+  if (response.ok) {
+    return await response.json()
+  } else {
+    return Promise.reject(response.status)
+  }
 }
+
+function getLocation() {
+  get(ipifyFile)
+    .then((data) => {
+      locationData.lat = data.location.lat
+      locationData.lng = data.location.lng
+
+      console.log(locationData)
+    })
+    .catch((err) => console.log('Error with status: ' + err))
+}
+
+getLocation()
