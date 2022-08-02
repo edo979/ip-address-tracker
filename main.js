@@ -3,7 +3,9 @@ import './scss/stayle.scss'
 // const ipifyUrl =
 //   'https://geo.ipify.org/api/v2/country,city?apiKey=at_xxGERdbJjZCIHWKQSyP09O9KZHXSs'
 
-const ipifyFile = 'ipify.json',
+const submitBtn = document.getElementById('submit'),
+  searchEl = document.getElementById('search'),
+  ipifyFile = 'ipify.json',
   locationData = { lat: undefined, lng: undefined }
 
 export async function get(url) {
@@ -27,4 +29,9 @@ function getLocation() {
     .catch((err) => console.log('Error with status: ' + err))
 }
 
-getLocation()
+submitBtn.addEventListener('click', (e) => {
+  e.preventDefault()
+
+  console.log(searchEl.value)
+  getLocation()
+})
