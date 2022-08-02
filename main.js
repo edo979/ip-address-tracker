@@ -24,9 +24,21 @@ function getLocation() {
       locationData.lat = data.location.lat
       locationData.lng = data.location.lng
 
-      console.log(locationData)
+      getMap(data.location.lat, data.location.lng)
     })
     .catch((err) => console.log('Error with status: ' + err))
+}
+
+function getMap(lat, lng) {
+  let map = L.map('map', { zoomControl: false }).setView(
+    [43.668544, 18.974854],
+    13
+  )
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(map)
 }
 
 submitBtn.addEventListener('click', (e) => {
