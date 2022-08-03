@@ -24,23 +24,30 @@ function getLocation() {
       locationData.lat = data.location.lat
       locationData.lng = data.location.lng
 
-      getMap(data.location.lat, data.location.lng)
+      getMap(43.668544, 18.974854)
     })
     .catch((err) => console.log('Error with status: ' + err))
 }
 
 function getMap(lat, lng) {
-  let map = L.map('map').setView([43.668544, 18.974854], 13)
+  let map = L.map('map', { zoomControl: false }).setView([lat, lng], 13)
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map)
+
+  L.marker([lat, lng], {
+    icon: L.icon({
+      iconUrl: './images/icon-location.svg',
+      iconSize: [45, 55],
+      iconAnchor: [22, 54],
+    }),
+  }).addTo(map)
 }
 
 submitBtn.addEventListener('click', (e) => {
   e.preventDefault()
-
   console.log(searchEl.value)
   getLocation()
 })
