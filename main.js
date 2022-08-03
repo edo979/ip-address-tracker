@@ -1,6 +1,8 @@
 import './scss/stayle.scss'
 import { isIP } from 'is-ip'
 
+import iconUrl from './images/icon-location.svg'
+
 const submitBtn = document.getElementById('submit'),
   searchEl = document.getElementById('search')
 let inputParam = '',
@@ -38,7 +40,7 @@ function getMap(lat, lng) {
 
     mapMarker = L.marker([lat, lng], {
       icon: L.icon({
-        iconUrl: './images/icon-location.svg',
+        iconUrl,
         iconSize: [45, 55],
         iconAnchor: [22, 54],
       }),
