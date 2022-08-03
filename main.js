@@ -55,6 +55,10 @@ submitBtn.addEventListener('click', (e) => {
 })
 
 function checkInput(userInput) {
+  const pEl = document.querySelector('.error-msg')
+
+  if (!pEl.classList.contains('hidden')) pEl.classList.add('hidden')
+
   // check is ip address
   if (isIP(userInput)) {
     console.log('ip')
@@ -70,5 +74,6 @@ function checkInput(userInput) {
     return
   }
 
-  console.log('error input')
+  // only show error
+  pEl.classList.remove('hidden')
 }

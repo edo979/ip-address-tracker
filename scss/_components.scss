@@ -10,6 +10,23 @@
   text-align: center;
 }
 
+form {
+  position: relative;
+
+  .error-msg {
+    position: absolute;
+    width: 100%;
+    bottom: -1.5rem;
+
+    font-size: var(--fs-300);
+    color: #b21807;
+
+    &.hidden {
+      display: none;
+    }
+  }
+}
+
 .input-group {
   margin-top: 1.5rem;
   margin-inline: auto;
@@ -23,6 +40,10 @@
     border: 0;
     padding-inline: 1.5rem;
     color: inherit;
+
+    &:focus-visible {
+      outline: 1px solid blue;
+    }
 
     &::placeholder {
       font-size: var(--fs-300);
@@ -42,6 +63,12 @@
     &:focus {
       background-color: $Very-Dark-Gray;
     }
+  }
+
+  .error-msg {
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
   }
 }
 
