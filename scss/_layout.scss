@@ -13,17 +13,22 @@
 }
 
 .inner-container {
-  grid-area: 1 / 2 / 3 / 3;
+  grid-area: 1 / 2 / 2 / 3;
   z-index: 2;
 }
 
 .top-background {
-  height: 300px;
   grid-area: 1 / 1 / 2 / 4;
   z-index: 1;
+}
+
+.top-background,
+.inner-container {
+  height: 300px;
 }
 
 .map {
   min-height: 300px;
   grid-area: 2 / 1 / 3 / 4;
+  z-index: 1;
 }

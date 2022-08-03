@@ -6,11 +6,13 @@
     --fs-800: 1.75rem;
   }
 
-  .top-background {
+  .top-background,
+  .inner-container {
     height: 280px;
   }
 
   .container {
+    margin-top: 2.5rem;
     display: flex;
     justify-content: space-between;
     padding: 1.2rem 0;
@@ -35,6 +37,10 @@
 @media (min-width: 58em) {
   :root {
     --fs-500: 1.45rem;
+  }
+
+  .container {
+    margin-top: 3rem;
   }
 
   .box {

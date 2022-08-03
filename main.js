@@ -30,10 +30,7 @@ function getLocation() {
 }
 
 function getMap(lat, lng) {
-  let map = L.map('map', { zoomControl: false }).setView(
-    [43.668544, 18.974854],
-    13
-  )
+  let map = L.map('map').setView([43.668544, 18.974854], 13)
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution:
