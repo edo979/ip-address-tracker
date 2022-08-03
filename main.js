@@ -1,31 +1,21 @@
 import './scss/stayle.scss'
 import { isIP } from 'is-ip'
 
-// const ipifyUrl =
-//   'https://geo.ipify.org/api/v2/country,city?apiKey=at_xxGERdbJjZCIHWKQSyP09O9KZHXSs'
+const ipifyUrl =
+  'https://geo.ipify.org/api/v2/country,city?apiKey=at_xxGERdbJjZCIHWKQSyP09O9KZHXSs'
 
 const submitBtn = document.getElementById('submit'),
-  searchEl = document.getElementById('search'),
-  ipifyFile = 'ipify.json',
-  locationData = { lat: undefined, lng: undefined }
+  searchEl = document.getElementById('search')
+let inputParam = '',
+  inputData = ''
 
-export async function get(url) {
-  const response = await fetch(url)
+async function getLocation() {
+  const url = `${ipifyUrl}&${inputParam}=${inputData}`
 
-  if (response.ok) {
-    return await response.json()
-  } else {
-    return Promise.reject(response.status)
-  }
-}
-
-function getLocation() {
-  get(ipifyFile)
+  fetch(url)
+    .then((res) => res.json())
     .then((data) => {
-      locationData.lat = data.location.lat
-      locationData.lng = data.location.lng
-
-      getMap(43.668544, 18.974854)
+      getMap(data.location.lat, data.location.lng)
     })
     .catch((err) => console.log('Error with status: ' + err))
 }
@@ -50,8 +40,6 @@ function getMap(lat, lng) {
 submitBtn.addEventListener('click', (e) => {
   e.preventDefault()
   checkInput(searchEl.value)
-
-  //getLocation()
 })
 
 function checkInput(userInput) {
@@ -61,7 +49,9 @@ function checkInput(userInput) {
 
   // check is ip address
   if (isIP(userInput)) {
-    console.log('ip')
+    inputParam = 'ipAddress'
+    inputData = userInput
+    getLocation()
     return
   }
   //  or domain
@@ -70,7 +60,9 @@ function checkInput(userInput) {
   )
 
   if (reg.test(userInput)) {
-    console.log('domain')
+    inputParam = 'domain'
+    inputData = userInput
+    getLocation()
     return
   }
 
