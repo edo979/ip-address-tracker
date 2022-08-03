@@ -21,6 +21,7 @@ async function getLocation() {
     .then((res) => res.json())
     .then((data) => {
       getMap(data.location.lat, data.location.lng)
+      updateView(data)
     })
     .catch((err) => console.log('Error with status: ' + err))
 }
@@ -44,6 +45,18 @@ function getMap(lat, lng) {
   } else {
     map.flyTo([lat, lng], 13)
   }
+}
+
+function updateView(data) {
+  const ipEl = document.getElementById('v-ip-address'),
+    locationEl = document.getElementById('v-location'),
+    timezoneEl = document.getElementById('v-timezone'),
+    ispEl = document.getElementById('v-isp')
+
+  ipEl.textContent = data.ip
+  locationEl.textContent = `${data.location.region}, ${data.location.city}`
+  timezoneEl.textContent = data.location.timezone
+  ispEl.textContent = data.isp
 }
 
 function checkInput(userInput) {
