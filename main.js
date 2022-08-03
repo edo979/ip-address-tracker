@@ -1,4 +1,5 @@
 import './scss/stayle.scss'
+import { isIP } from 'is-ip'
 
 // const ipifyUrl =
 //   'https://geo.ipify.org/api/v2/country,city?apiKey=at_xxGERdbJjZCIHWKQSyP09O9KZHXSs'
@@ -48,6 +49,26 @@ function getMap(lat, lng) {
 
 submitBtn.addEventListener('click', (e) => {
   e.preventDefault()
-  console.log(searchEl.value)
-  getLocation()
+  checkInput(searchEl.value)
+
+  //getLocation()
 })
+
+function checkInput(userInput) {
+  // check is ip address
+  if (isIP(userInput)) {
+    console.log('ip')
+    return
+  }
+  //  or domain
+  const reg = new RegExp(
+    /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/
+  )
+
+  if (reg.test(userInput)) {
+    console.log('domain')
+    return
+  }
+
+  console.log('error input')
+}
