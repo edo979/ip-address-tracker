@@ -5,7 +5,8 @@ const submitBtn = document.getElementById('submit'),
   searchEl = document.getElementById('search')
 let inputParam = '',
   inputData = '',
-  map = undefined
+  map = undefined,
+  mapMarker = undefined
 
 // event listener
 submitBtn.addEventListener('click', (e) => {
@@ -35,7 +36,7 @@ function getMap(lat, lng) {
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map)
 
-    L.marker([lat, lng], {
+    mapMarker = L.marker([lat, lng], {
       icon: L.icon({
         iconUrl: './images/icon-location.svg',
         iconSize: [45, 55],
@@ -44,6 +45,7 @@ function getMap(lat, lng) {
     }).addTo(map)
   } else {
     map.flyTo([lat, lng], 13)
+    mapMarker.setLatLng([lat, lng])
   }
 }
 
