@@ -27,10 +27,6 @@
     &:not(:first-child) {
       border-left: 1px solid $Light-Gray;
     }
-
-    &_content {
-      //max-width: 10ch;
-    }
   }
 }
 

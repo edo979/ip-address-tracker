@@ -62,29 +62,29 @@ function updateView(data) {
 }
 
 function checkInput(userInput) {
-  const pEl = document.querySelector('.error-msg')
+  const msgErrorEl = document.querySelector('.error-msg'),
+    reg = new RegExp(
+      /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/
+    )
+  let isInputValid = false
 
-  if (!pEl.classList.contains('hidden')) pEl.classList.add('hidden')
+  if (!msgErrorEl.classList.contains('hidden'))
+    msgErrorEl.classList.add('hidden')
 
-  // check is ip address
   if (isIP(userInput)) {
+    // check is ip address
     inputParam = 'ipAddress'
-    inputData = userInput
-    getLocation()
-    return
-  }
-  //  or domain
-  const reg = new RegExp(
-    /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/
-  )
-
-  if (reg.test(userInput)) {
+    isInputValid = true
+  } else if (reg.test(userInput)) {
+    //  or domain
     inputParam = 'domain'
-    inputData = userInput
-    getLocation()
-    return
+    isInputValid = true
   }
 
-  // only show error
-  pEl.classList.remove('hidden')
+  if (isInputValid) {
+    inputData = userInput
+    getLocation()
+  } else {
+    msgErrorEl.classList.remove('hidden')
+  }
 }
