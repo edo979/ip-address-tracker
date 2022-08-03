@@ -1,16 +1,21 @@
 import './scss/stayle.scss'
 import { isIP } from 'is-ip'
 
-const ipifyUrl =
-  'https://geo.ipify.org/api/v2/country,city?apiKey=at_xxGERdbJjZCIHWKQSyP09O9KZHXSs'
-
 const submitBtn = document.getElementById('submit'),
   searchEl = document.getElementById('search')
 let inputParam = '',
-  inputData = ''
+  inputData = '',
+  map = undefined
+
+// event listener
+submitBtn.addEventListener('click', (e) => {
+  e.preventDefault()
+  checkInput(searchEl.value)
+})
 
 async function getLocation() {
-  const url = `${ipifyUrl}&${inputParam}=${inputData}`
+  const url = 'ipify.json'
+  //const url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_xxGERdbJjZCIHWKQSyP09O9KZHXSs&${inputParam}=${inputData}`
 
   fetch(url)
     .then((res) => res.json())
@@ -21,7 +26,7 @@ async function getLocation() {
 }
 
 function getMap(lat, lng) {
-  let map = L.map('map', { zoomControl: false }).setView([lat, lng], 13)
+  map = L.map('map', { zoomControl: false }).setView([lat, lng], 13)
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution:
@@ -36,11 +41,6 @@ function getMap(lat, lng) {
     }),
   }).addTo(map)
 }
-
-submitBtn.addEventListener('click', (e) => {
-  e.preventDefault()
-  checkInput(searchEl.value)
-})
 
 function checkInput(userInput) {
   const pEl = document.querySelector('.error-msg')
