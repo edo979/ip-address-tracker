@@ -14,8 +14,8 @@ submitBtn.addEventListener('click', (e) => {
 })
 
 async function getLocation() {
-  const url = 'ipify.json'
-  //const url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_xxGERdbJjZCIHWKQSyP09O9KZHXSs&${inputParam}=${inputData}`
+  //const url = 'ipify.json'
+  const url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_xxGERdbJjZCIHWKQSyP09O9KZHXSs&${inputParam}=${inputData}`
 
   fetch(url)
     .then((res) => res.json())
