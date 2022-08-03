@@ -11,6 +11,12 @@
     height: 280px;
   }
 
+  form {
+    .error-msg {
+      bottom: -1.5rem;
+    }
+  }
+
   .container {
     margin-top: 2.25rem;
     display: flex;

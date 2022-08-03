@@ -16,10 +16,10 @@ form {
   .error-msg {
     position: absolute;
     width: 100%;
-    bottom: -1.5rem;
+    bottom: -1rem;
 
     font-size: var(--fs-300);
-    color: #b21807;
+    color: orange;
 
     &.hidden {
       display: none;
@@ -63,12 +63,6 @@ form {
     &:focus {
       background-color: $Very-Dark-Gray;
     }
-  }
-
-  .error-msg {
-    position: absolute;
-    bottom: 1rem;
-    left: 0;
   }
 }
 
