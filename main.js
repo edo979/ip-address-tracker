@@ -26,20 +26,24 @@ async function getLocation() {
 }
 
 function getMap(lat, lng) {
-  map = L.map('map', { zoomControl: false }).setView([lat, lng], 13)
+  if (map === undefined) {
+    map = L.map('map', { zoomControl: false }).setView([lat, lng], 13)
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  }).addTo(map)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(map)
 
-  L.marker([lat, lng], {
-    icon: L.icon({
-      iconUrl: './images/icon-location.svg',
-      iconSize: [45, 55],
-      iconAnchor: [22, 54],
-    }),
-  }).addTo(map)
+    L.marker([lat, lng], {
+      icon: L.icon({
+        iconUrl: './images/icon-location.svg',
+        iconSize: [45, 55],
+        iconAnchor: [22, 54],
+      }),
+    }).addTo(map)
+  } else {
+    map.flyTo([lat, lng], 13)
+  }
 }
 
 function checkInput(userInput) {
