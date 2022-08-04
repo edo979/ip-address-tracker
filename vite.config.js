@@ -1,5 +1,5 @@
 export default {
-  base: '/',
+  base: '/ip-address-tracker/',
   css: {
     devSourcemap: true,
   },
